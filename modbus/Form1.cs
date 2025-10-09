@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace modbus
 {
@@ -65,7 +66,24 @@ namespace modbus
         }
         private void button2_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (socket != null)
+                {
+                    socket.Close();
+                    textBox1.Text += "Déconnexion réussie\r\n";
+                }
+            }
+            catch (SocketException se)
+            {
+                textBox1.Text += "**Exception lors de la déconnexion\r\n";
+                textBox1.Text += "Message : " + se.Message + "\r\n";
+            }
+            catch (Exception ex)
+            {
+                textBox1.Text += "**Exception : " + ex.Message + "\r\n";
+            }
+        }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
