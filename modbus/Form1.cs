@@ -33,58 +33,91 @@ namespace modbus
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void ButtonConnexion_Click(object sender, EventArgs e)
+        { 
             try
             {
-                textBox1.Text = "Connexion au serveur 172.17.50.180..";
+                // Récupération - adresse
+                string adresseIP = textBoxAdresseIP.Text;
 
+                // Affichage - tentative
+                textBoxStatut.Text += $"Connexion au serveur {adresseIP}\r\n";
+
+                // Création - socket
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-                // Récupérer l'adresse IP depuis la textbox
-                string adresseIP = textBox1.Text;
+                // Conversion - adresse
+                IPAddress ipAddress = IPAddress.Parse(adresseIP);
 
-                // Créer l'objet IPEndPoint (adresse IP + port Modbus 502)
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(adresseIP), 502);
+                // Création - endpoint
+                IPEndPoint endPoint = new IPEndPoint(ipAddress, 502); // Port Modbus standard
 
-                // Connecter la socket au serveur
+                // Connexion - serveur
                 socket.Connect(endPoint);
 
-                // Afficher le message de succès
-                textBox1.Text += "Connexion ok\r\n";
-            }
+                // Affichage - succès
+                textBoxStatut.Text += "Connexion ok\r\n";
 
+                // Défilement - automatique
+                textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+                textBoxStatut.ScrollToCaret();
+            }
             catch (System.Net.Sockets.SocketException se)
             {
-                this.textBox1.Text += "**Exception : Impossible de se connecter au serveur\r\n";
-            }
+                // Erreur - socket
+                textBoxStatut.Text += "**Exception : Impossible de se connecter au serveur\r\n";
+                textBoxStatut.Text += "Message : " + se.Message + "\r\n";
 
-            catch (Exception ex)
+                // Défilement - automatique
+                textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+                textBoxStatut.ScrollToCaret();
+            }
+            catch (System.Exception ex)
             {
-                textBox1.Text += "**Exception : " + ex.Message + "\r\n";
+                // Erreur - générale
+                textBoxStatut.Text += "**Exception : Impossible de se connecter au serveur\r\n";
+                textBoxStatut.Text += "Message : " + ex.Message + "\r\n";
+
+                // Défilement - automatique
+                textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+                textBoxStatut.ScrollToCaret();
             }
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void ButtonDeconnexion_Click(object sender, EventArgs e)
         {
             try
             {
+                // Vérification - socket
                 if (socket != null)
                 {
+                    // Fermeture - connexion
                     socket.Close();
-                    textBox1.Text += "Déconnexion réussie\r\n";
+
+                    // Affichage - succès
+                    textBoxStatut.Text += "Déconnexion réussie\r\n";
                 }
+                else
+                {
+                    // Affichage - aucune
+                    textBoxStatut.Text += "Aucune connexion active\r\n";
+                }
+
+                // Défilement - automatique
+                textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+                textBoxStatut.ScrollToCaret();
             }
-            catch (SocketException se)
+            catch (System.Exception ex)
             {
-                textBox1.Text += "**Exception lors de la déconnexion\r\n";
-                textBox1.Text += "Message : " + se.Message + "\r\n";
-            }
-            catch (Exception ex)
-            {
-                textBox1.Text += "**Exception : " + ex.Message + "\r\n";
+                // Erreur - déconnexion
+                textBoxStatut.Text += "**Exception lors de la déconnexion\r\n";
+                textBoxStatut.Text += "Message : " + ex.Message + "\r\n";
+
+                // Défilement - automatique
+                textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+                textBoxStatut.ScrollToCaret();
             }
         }
-        }
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
