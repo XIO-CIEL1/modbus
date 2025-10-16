@@ -38,6 +38,9 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.buttonLireTension = new System.Windows.Forms.Button();
+            this.textBoxTension = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -68,7 +71,7 @@
             this.buttonConnexion_Click.TabIndex = 2;
             this.buttonConnexion_Click.Text = "Connexion";
             this.buttonConnexion_Click.UseVisualStyleBackColor = true;
-            this.buttonConnexion_Click.Click += new System.EventHandler(this.ButtonConnexion_Click);
+            this.buttonConnexion_Click.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonDeconnexion_Click
             // 
@@ -78,7 +81,7 @@
             this.buttonDeconnexion_Click.TabIndex = 3;
             this.buttonDeconnexion_Click.Text = "Deconnexion";
             this.buttonDeconnexion_Click.UseVisualStyleBackColor = true;
-            this.buttonDeconnexion_Click.Click += new System.EventHandler(this.ButtonDeconnexion_Click);
+            this.buttonDeconnexion_Click.Click += new System.EventHandler(this.button2_Click);
             // 
             // contextMenuStrip1
             // 
@@ -111,11 +114,42 @@
             this.vScrollBar1.TabIndex = 8;
             this.vScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar1_Scroll);
             // 
+            // buttonLireTension
+            // 
+            this.buttonLireTension.Location = new System.Drawing.Point(380, 124);
+            this.buttonLireTension.Name = "buttonLireTension";
+            this.buttonLireTension.Size = new System.Drawing.Size(75, 23);
+            this.buttonLireTension.TabIndex = 9;
+            this.buttonLireTension.Text = "Tension";
+            this.buttonLireTension.UseVisualStyleBackColor = true;
+            this.buttonLireTension.Click += new System.EventHandler(this.buttonLireTension_Click);
+            // 
+            // textBoxTension
+            // 
+            this.textBoxTension.Location = new System.Drawing.Point(482, 124);
+            this.textBoxTension.Name = "textBoxTension";
+            this.textBoxTension.Size = new System.Drawing.Size(85, 20);
+            this.textBoxTension.TabIndex = 10;
+            this.textBoxTension.TextChanged += new System.EventHandler(this.textBoxTension_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(412, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Tension moteur en Volt";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxTension);
+            this.Controls.Add(this.buttonLireTension);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.textBoxStatut);
             this.Controls.Add(this.buttonDeconnexion_Click);
@@ -141,6 +175,9 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
         private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.Button buttonLireTension;
+        private System.Windows.Forms.TextBox textBoxTension;
+        private System.Windows.Forms.Label label2;
     }
 }
 
