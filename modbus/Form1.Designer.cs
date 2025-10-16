@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.textBoxAdresseIP = new System.Windows.Forms.TextBox();
+            this.buttonConnexion_Click = new System.Windows.Forms.Button();
+            this.buttonDeconnexion_Click = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.textBoxStatut = new System.Windows.Forms.RichTextBox();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
@@ -50,48 +50,48 @@
             this.label1.Text = "Ip seveur";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // textBoxAdresseIP
             // 
-            this.textBox1.AccessibleDescription = "textBoxAdresseIP";
-            this.textBox1.AccessibleName = "textBoxAdresseIP";
-            this.textBox1.Location = new System.Drawing.Point(76, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(279, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBoxAdresseIP.AccessibleDescription = "textBoxAdresseIP";
+            this.textBoxAdresseIP.AccessibleName = "textBoxAdresseIP";
+            this.textBoxAdresseIP.Location = new System.Drawing.Point(76, 46);
+            this.textBoxAdresseIP.Name = "textBoxAdresseIP";
+            this.textBoxAdresseIP.Size = new System.Drawing.Size(279, 20);
+            this.textBoxAdresseIP.TabIndex = 1;
+            this.textBoxAdresseIP.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // button1
+            // buttonConnexion_Click
             // 
-            this.button1.Location = new System.Drawing.Point(380, 44);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Connexion";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonConnexion_Click.Location = new System.Drawing.Point(380, 44);
+            this.buttonConnexion_Click.Name = "buttonConnexion_Click";
+            this.buttonConnexion_Click.Size = new System.Drawing.Size(75, 23);
+            this.buttonConnexion_Click.TabIndex = 2;
+            this.buttonConnexion_Click.Text = "Connexion";
+            this.buttonConnexion_Click.UseVisualStyleBackColor = true;
+            this.buttonConnexion_Click.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // buttonDeconnexion_Click
             // 
-            this.button2.Location = new System.Drawing.Point(482, 44);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(85, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Deconnexion";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonDeconnexion_Click.Location = new System.Drawing.Point(482, 44);
+            this.buttonDeconnexion_Click.Name = "buttonDeconnexion_Click";
+            this.buttonDeconnexion_Click.Size = new System.Drawing.Size(85, 23);
+            this.buttonDeconnexion_Click.TabIndex = 3;
+            this.buttonDeconnexion_Click.Text = "Deconnexion";
+            this.buttonDeconnexion_Click.UseVisualStyleBackColor = true;
+            this.buttonDeconnexion_Click.Click += new System.EventHandler(this.button2_Click);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // richTextBox1
+            // textBoxStatut
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(593, 44);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(176, 184);
-            this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = "";
+            this.textBoxStatut.Location = new System.Drawing.Point(593, 44);
+            this.textBoxStatut.Name = "textBoxStatut";
+            this.textBoxStatut.Size = new System.Drawing.Size(176, 184);
+            this.textBoxStatut.TabIndex = 5;
+            this.textBoxStatut.Text = "";
             // 
             // contextMenuStrip2
             // 
@@ -117,10 +117,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.vScrollBar1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxStatut);
+            this.Controls.Add(this.buttonDeconnexion_Click);
+            this.Controls.Add(this.buttonConnexion_Click);
+            this.Controls.Add(this.textBoxAdresseIP);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -133,11 +133,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBoxAdresseIP;
+        private System.Windows.Forms.Button buttonConnexion_Click;
+        private System.Windows.Forms.Button buttonDeconnexion_Click;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox textBoxStatut;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
         private System.Windows.Forms.VScrollBar vScrollBar1;
