@@ -68,7 +68,7 @@
             this.buttonConnexion_Click.TabIndex = 2;
             this.buttonConnexion_Click.Text = "Connexion";
             this.buttonConnexion_Click.UseVisualStyleBackColor = true;
-            this.buttonConnexion_Click.Click += new System.EventHandler(this.button1_Click);
+            this.buttonConnexion_Click.Click += new System.EventHandler(this.ButtonConnexion_Click);
             // 
             // buttonDeconnexion_Click
             // 
@@ -78,7 +78,7 @@
             this.buttonDeconnexion_Click.TabIndex = 3;
             this.buttonDeconnexion_Click.Text = "Deconnexion";
             this.buttonDeconnexion_Click.UseVisualStyleBackColor = true;
-            this.buttonDeconnexion_Click.Click += new System.EventHandler(this.button2_Click);
+            this.buttonDeconnexion_Click.Click += new System.EventHandler(this.ButtonDeconnexion_Click);
             // 
             // contextMenuStrip1
             // 

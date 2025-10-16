@@ -33,8 +33,8 @@ namespace modbus
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void ButtonConnexion_Click(object sender, EventArgs e)
+        { 
             try
             {
                 // Récupération - adresse
@@ -83,7 +83,6 @@ namespace modbus
                 textBoxStatut.ScrollToCaret();
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             try
@@ -118,6 +117,7 @@ namespace modbus
                 textBoxStatut.ScrollToCaret();
             }
         }
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
