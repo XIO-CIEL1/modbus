@@ -28,156 +28,114 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelAdresseIP = new System.Windows.Forms.Label();
             this.textBoxAdresseIP = new System.Windows.Forms.TextBox();
-            this.buttonConnexion_Click = new System.Windows.Forms.Button();
-            this.buttonDeconnexion_Click = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.textBoxStatut = new System.Windows.Forms.RichTextBox();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.buttonLireTension = new System.Windows.Forms.Button();
+            this.buttonConnexion = new System.Windows.Forms.Button();
+            this.buttonDeconnexion = new System.Windows.Forms.Button();
+            this.labelTensionMoteur = new System.Windows.Forms.Label();
+            this.buttonLire = new System.Windows.Forms.Button();
             this.textBoxTension = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxStatut = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ip seveur";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // textBoxAdresseIP
-            // 
-            this.textBoxAdresseIP.AccessibleDescription = "textBoxAdresseIP";
-            this.textBoxAdresseIP.AccessibleName = "textBoxAdresseIP";
-            this.textBoxAdresseIP.Location = new System.Drawing.Point(76, 46);
+
+            // labelAdresseIP - étiquette
+            this.labelAdresseIP.AutoSize = true;
+            this.labelAdresseIP.Location = new System.Drawing.Point(12, 15);
+            this.labelAdresseIP.Name = "labelAdresseIP";
+            this.labelAdresseIP.Size = new System.Drawing.Size(65, 13);
+            this.labelAdresseIP.TabIndex = 0;
+            this.labelAdresseIP.Text = "Ip serveur :";
+
+            // textBoxAdresseIP - saisie
+            this.textBoxAdresseIP.Location = new System.Drawing.Point(83, 12);
             this.textBoxAdresseIP.Name = "textBoxAdresseIP";
-            this.textBoxAdresseIP.Size = new System.Drawing.Size(279, 20);
+            this.textBoxAdresseIP.Size = new System.Drawing.Size(100, 20);
             this.textBoxAdresseIP.TabIndex = 1;
-            this.textBoxAdresseIP.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // buttonConnexion_Click
-            // 
-            this.buttonConnexion_Click.Location = new System.Drawing.Point(380, 44);
-            this.buttonConnexion_Click.Name = "buttonConnexion_Click";
-            this.buttonConnexion_Click.Size = new System.Drawing.Size(75, 23);
-            this.buttonConnexion_Click.TabIndex = 2;
-            this.buttonConnexion_Click.Text = "Connexion";
-            this.buttonConnexion_Click.UseVisualStyleBackColor = true;
-            this.buttonConnexion_Click.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // buttonDeconnexion_Click
-            // 
-            this.buttonDeconnexion_Click.Location = new System.Drawing.Point(482, 44);
-            this.buttonDeconnexion_Click.Name = "buttonDeconnexion_Click";
-            this.buttonDeconnexion_Click.Size = new System.Drawing.Size(85, 23);
-            this.buttonDeconnexion_Click.TabIndex = 3;
-            this.buttonDeconnexion_Click.Text = "Deconnexion";
-            this.buttonDeconnexion_Click.UseVisualStyleBackColor = true;
-            this.buttonDeconnexion_Click.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // textBoxStatut
-            // 
-            this.textBoxStatut.Location = new System.Drawing.Point(593, 44);
-            this.textBoxStatut.Name = "textBoxStatut";
-            this.textBoxStatut.Size = new System.Drawing.Size(176, 184);
-            this.textBoxStatut.TabIndex = 5;
-            this.textBoxStatut.Text = "";
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
-            // 
-            // contextMenuStrip3
-            // 
-            this.contextMenuStrip3.Name = "contextMenuStrip3";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(772, 39);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 184);
-            this.vScrollBar1.TabIndex = 8;
-            this.vScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar1_Scroll);
-            // 
-            // buttonLireTension
-            // 
-            this.buttonLireTension.Location = new System.Drawing.Point(380, 124);
-            this.buttonLireTension.Name = "buttonLireTension";
-            this.buttonLireTension.Size = new System.Drawing.Size(75, 23);
-            this.buttonLireTension.TabIndex = 9;
-            this.buttonLireTension.Text = "Tension";
-            this.buttonLireTension.UseVisualStyleBackColor = true;
-            this.buttonLireTension.Click += new System.EventHandler(this.buttonLireTension_Click);
-            // 
-            // textBoxTension
-            // 
-            this.textBoxTension.Location = new System.Drawing.Point(482, 124);
+            this.textBoxAdresseIP.Text = "172.17.50.125";
+
+            // buttonConnexion - bouton
+            this.buttonConnexion.Location = new System.Drawing.Point(200, 10);
+            this.buttonConnexion.Name = "buttonConnexion";
+            this.buttonConnexion.Size = new System.Drawing.Size(75, 23);
+            this.buttonConnexion.TabIndex = 2;
+            this.buttonConnexion.Text = "Connexion";
+            this.buttonConnexion.UseVisualStyleBackColor = true;
+            this.buttonConnexion.Click += new System.EventHandler(this.buttonConnexion_Click);
+
+            // buttonDeconnexion - bouton
+            this.buttonDeconnexion.Location = new System.Drawing.Point(290, 10);
+            this.buttonDeconnexion.Name = "buttonDeconnexion";
+            this.buttonDeconnexion.Size = new System.Drawing.Size(85, 23);
+            this.buttonDeconnexion.TabIndex = 3;
+            this.buttonDeconnexion.Text = "Deconnexion";
+            this.buttonDeconnexion.UseVisualStyleBackColor = true;
+            this.buttonDeconnexion.Click += new System.EventHandler(this.buttonDeconnexion_Click);
+
+            // labelTensionMoteur - étiquette
+            this.labelTensionMoteur.AutoSize = true;
+            this.labelTensionMoteur.Location = new System.Drawing.Point(335, 120);
+            this.labelTensionMoteur.Name = "labelTensionMoteur";
+            this.labelTensionMoteur.Size = new System.Drawing.Size(110, 13);
+            this.labelTensionMoteur.TabIndex = 4;
+            this.labelTensionMoteur.Text = "Tension moteur en Volt";
+
+            // buttonLire - bouton
+            this.buttonLire.Location = new System.Drawing.Point(340, 145);
+            this.buttonLire.Name = "buttonLire";
+            this.buttonLire.Size = new System.Drawing.Size(50, 23);
+            this.buttonLire.TabIndex = 5;
+            this.buttonLire.Text = "Lire";
+            this.buttonLire.UseVisualStyleBackColor = true;
+            this.buttonLire.Click += new System.EventHandler(this.buttonLire_Click);
+
+            // textBoxTension - affichage
+            this.textBoxTension.Location = new System.Drawing.Point(400, 145);
             this.textBoxTension.Name = "textBoxTension";
-            this.textBoxTension.Size = new System.Drawing.Size(85, 20);
-            this.textBoxTension.TabIndex = 10;
-            this.textBoxTension.TextChanged += new System.EventHandler(this.textBoxTension_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(412, 99);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Tension moteur en Volt";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // Form1
-            // 
+            this.textBoxTension.ReadOnly = true;
+            this.textBoxTension.Size = new System.Drawing.Size(80, 20);
+            this.textBoxTension.TabIndex = 6;
+            this.textBoxTension.BackColor = System.Drawing.Color.Blue;
+            this.textBoxTension.ForeColor = System.Drawing.Color.White;
+            this.textBoxTension.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTension.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+
+            // textBoxStatut - affichage
+            this.textBoxStatut.Location = new System.Drawing.Point(520, 50);
+            this.textBoxStatut.Multiline = true;
+            this.textBoxStatut.Name = "textBoxStatut";
+            this.textBoxStatut.ReadOnly = true;
+            this.textBoxStatut.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxStatut.Size = new System.Drawing.Size(268, 388);
+            this.textBoxStatut.TabIndex = 7;
+
+            // Form1 - fenêtre
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxTension);
-            this.Controls.Add(this.buttonLireTension);
-            this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.textBoxStatut);
-            this.Controls.Add(this.buttonDeconnexion_Click);
-            this.Controls.Add(this.buttonConnexion_Click);
+            this.Controls.Add(this.textBoxTension);
+            this.Controls.Add(this.buttonLire);
+            this.Controls.Add(this.labelTensionMoteur);
+            this.Controls.Add(this.buttonDeconnexion);
+            this.Controls.Add(this.buttonConnexion);
             this.Controls.Add(this.textBoxAdresseIP);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelAdresseIP);
             this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Text = "Barrière Modbus";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelAdresseIP;
         private System.Windows.Forms.TextBox textBoxAdresseIP;
-        private System.Windows.Forms.Button buttonConnexion_Click;
-        private System.Windows.Forms.Button buttonDeconnexion_Click;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.RichTextBox textBoxStatut;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.Button buttonLireTension;
+        private System.Windows.Forms.Button buttonConnexion;
+        private System.Windows.Forms.Button buttonDeconnexion;
+        private System.Windows.Forms.Label labelTensionMoteur;
+        private System.Windows.Forms.Button buttonLire;
         private System.Windows.Forms.TextBox textBoxTension;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxStatut;
     }
 }
 
