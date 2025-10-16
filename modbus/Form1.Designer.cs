@@ -1,200 +1,327 @@
-﻿namespace modbus
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+
+namespace modbus
 {
-    partial class Form1
+    public class CModbus
     {
-        /// <summary>
-        /// Variable nécessaire au concepteur.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private Socket socket;
 
-        /// <summary>
-        /// Nettoyage des ressources utilisées.
-        /// </summary>
-        /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
-        protected override void Dispose(bool disposing)
+        public string Connexion(string adresseIP)
         {
-            if (disposing && (components != null))
+            try
             {
-                components.Dispose();
+                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                var ip = IPAddress.Parse(adresseIP);
+                var ep = new IPEndPoint(ip, 502);
+                socket.Connect(ep);
+                return "ok";
             }
-            base.Dispose(disposing);
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
-        #region Code généré par le Concepteur Windows Form
-
-        /// <summary>
-        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
-        /// le contenu de cette méthode avec l'éditeur de code.
-        /// </summary>
-        private void InitializeComponent()
+        public string Deconnexion()
         {
-            this.labelAdresseIP = new System.Windows.Forms.Label();
-            this.textBoxAdresseIP = new System.Windows.Forms.TextBox();
-            this.buttonConnexion = new System.Windows.Forms.Button();
-            this.buttonDeconnexion = new System.Windows.Forms.Button();
-            this.labelTensionMoteur = new System.Windows.Forms.Label();
-            this.buttonLire = new System.Windows.Forms.Button();
-            this.textBoxTension = new System.Windows.Forms.TextBox();
-            this.checkBoxAuto = new System.Windows.Forms.CheckBox();
-            this.buttonLireThermique = new System.Windows.Forms.Button();
-            this.textBoxThermique = new System.Windows.Forms.TextBox();
-            this.pictureBoxGraph = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer();
-            this.textBoxStatut = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraph)).BeginInit();
-            this.SuspendLayout();
-
-            // labelAdresseIP - étiquette
-            this.labelAdresseIP.AutoSize = true;
-            this.labelAdresseIP.Location = new System.Drawing.Point(12, 15);
-            this.labelAdresseIP.Name = "labelAdresseIP";
-            this.labelAdresseIP.Size = new System.Drawing.Size(65, 13);
-            this.labelAdresseIP.TabIndex = 0;
-            this.labelAdresseIP.Text = "Ip serveur :";
-
-            // textBoxAdresseIP - saisie
-            this.textBoxAdresseIP.Location = new System.Drawing.Point(83, 12);
-            this.textBoxAdresseIP.Name = "textBoxAdresseIP";
-            this.textBoxAdresseIP.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAdresseIP.TabIndex = 1;
-            this.textBoxAdresseIP.Text = "172.17.50.180";
-
-            // buttonConnexion - bouton
-            this.buttonConnexion.Location = new System.Drawing.Point(200, 10);
-            this.buttonConnexion.Name = "buttonConnexion";
-            this.buttonConnexion.Size = new System.Drawing.Size(75, 23);
-            this.buttonConnexion.TabIndex = 2;
-            this.buttonConnexion.Text = "Connexion";
-            this.buttonConnexion.UseVisualStyleBackColor = true;
-            this.buttonConnexion.Click += new System.EventHandler(this.buttonConnexion_Click);
-
-            // buttonDeconnexion - bouton
-            this.buttonDeconnexion.Location = new System.Drawing.Point(290, 10);
-            this.buttonDeconnexion.Name = "buttonDeconnexion";
-            this.buttonDeconnexion.Size = new System.Drawing.Size(85, 23);
-            this.buttonDeconnexion.TabIndex = 3;
-            this.buttonDeconnexion.Text = "Deconnexion";
-            this.buttonDeconnexion.UseVisualStyleBackColor = true;
-            this.buttonDeconnexion.Click += new System.EventHandler(this.buttonDeconnexion_Click);
-
-            // labelTensionMoteur - étiquette
-            this.labelTensionMoteur.AutoSize = true;
-            this.labelTensionMoteur.Location = new System.Drawing.Point(335, 120);
-            this.labelTensionMoteur.Name = "labelTensionMoteur";
-            this.labelTensionMoteur.Size = new System.Drawing.Size(110, 13);
-            this.labelTensionMoteur.TabIndex = 4;
-            this.labelTensionMoteur.Text = "Tension moteur en Volt";
-
-            // buttonLire - bouton
-            this.buttonLire.Location = new System.Drawing.Point(340, 145);
-            this.buttonLire.Name = "buttonLire";
-            this.buttonLire.Size = new System.Drawing.Size(50, 23);
-            this.buttonLire.TabIndex = 5;
-            this.buttonLire.Text = "Lire";
-            this.buttonLire.UseVisualStyleBackColor = true;
-            this.buttonLire.Click += new System.EventHandler(this.buttonLire_Click);
-
-            // textBoxTension - affichage
-            this.textBoxTension.Location = new System.Drawing.Point(400, 145);
-            this.textBoxTension.Name = "textBoxTension";
-            this.textBoxTension.ReadOnly = true;
-            this.textBoxTension.Size = new System.Drawing.Size(80, 20);
-            this.textBoxTension.TabIndex = 6;
-            this.textBoxTension.BackColor = System.Drawing.Color.Blue;
-            this.textBoxTension.ForeColor = System.Drawing.Color.White;
-            this.textBoxTension.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxTension.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-
-            // checkBoxAuto - case
-            this.checkBoxAuto.AutoSize = true;
-            this.checkBoxAuto.Location = new System.Drawing.Point(12, 75);
-            this.checkBoxAuto.Name = "checkBoxAuto";
-            this.checkBoxAuto.Size = new System.Drawing.Size(115, 17);
-            this.checkBoxAuto.TabIndex = 7;
-            this.checkBoxAuto.Text = "Mode automatique";
-            this.checkBoxAuto.UseVisualStyleBackColor = true;
-            this.checkBoxAuto.CheckedChanged += new System.EventHandler(this.checkBoxAuto_CheckedChanged);
-
-            // buttonLireThermique - bouton
-            this.buttonLireThermique.Location = new System.Drawing.Point(340, 175);
-            this.buttonLireThermique.Name = "buttonLireThermique";
-            this.buttonLireThermique.Size = new System.Drawing.Size(110, 23);
-            this.buttonLireThermique.TabIndex = 8;
-            this.buttonLireThermique.Text = "Lire Thermique Moteur";
-            this.buttonLireThermique.UseVisualStyleBackColor = true;
-            this.buttonLireThermique.Click += new System.EventHandler(this.buttonLireThermique_Click);
-
-            // textBoxThermique - affichage
-            this.textBoxThermique.Location = new System.Drawing.Point(460, 175);
-            this.textBoxThermique.Name = "textBoxThermique";
-            this.textBoxThermique.ReadOnly = true;
-            this.textBoxThermique.Size = new System.Drawing.Size(50, 20);
-            this.textBoxThermique.TabIndex = 9;
-            this.textBoxThermique.BackColor = System.Drawing.Color.Green;
-            this.textBoxThermique.ForeColor = System.Drawing.Color.White;
-            this.textBoxThermique.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxThermique.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-
-            // pictureBoxGraph - graphique
-            this.pictureBoxGraph.Location = new System.Drawing.Point(12, 220);
-            this.pictureBoxGraph.Name = "pictureBoxGraph";
-            this.pictureBoxGraph.Size = new System.Drawing.Size(500, 218);
-            this.pictureBoxGraph.TabIndex = 10;
-            this.pictureBoxGraph.BackColor = System.Drawing.Color.White;
-            this.pictureBoxGraph.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxGraph.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxGraph_Paint);
-
-            // timer1 - minuteur
-            this.timer1.Interval = 5000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-
-            // textBoxStatut - affichage
-            this.textBoxStatut.Location = new System.Drawing.Point(520, 50);
-            this.textBoxStatut.Multiline = true;
-            this.textBoxStatut.Name = "textBoxStatut";
-            this.textBoxStatut.ReadOnly = true;
-            this.textBoxStatut.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxStatut.Size = new System.Drawing.Size(268, 388);
-            this.textBoxStatut.TabIndex = 7;
-
-            // Form1 - fenêtre
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBoxStatut);
-            this.Controls.Add(this.pictureBoxGraph);
-            this.Controls.Add(this.textBoxThermique);
-            this.Controls.Add(this.buttonLireThermique);
-            this.Controls.Add(this.checkBoxAuto);
-            this.Controls.Add(this.textBoxTension);
-            this.Controls.Add(this.buttonLire);
-            this.Controls.Add(this.labelTensionMoteur);
-            this.Controls.Add(this.buttonDeconnexion);
-            this.Controls.Add(this.buttonConnexion);
-            this.Controls.Add(this.textBoxAdresseIP);
-            this.Controls.Add(this.labelAdresseIP);
-            this.Name = "Form1";
-            this.Text = "Barrière Modbus";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraph)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            try
+            {
+                if (socket != null)
+                {
+                    socket.Close();
+                }
+                return "ok";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
-        #endregion
+        public short LireUnMot(short adresse, ref string strResultat)
+        {
+            try
+            {
+                if (socket == null || !socket.Connected)
+                {
+                    strResultat = "non connecté";
+                    return 0;
+                }
 
-        private System.Windows.Forms.Label labelAdresseIP;
-        private System.Windows.Forms.TextBox textBoxAdresseIP;
-        private System.Windows.Forms.Button buttonConnexion;
-        private System.Windows.Forms.Button buttonDeconnexion;
-        private System.Windows.Forms.Label labelTensionMoteur;
-        private System.Windows.Forms.Button buttonLire;
-        private System.Windows.Forms.TextBox textBoxTension;
-        private System.Windows.Forms.CheckBox checkBoxAuto;
-        private System.Windows.Forms.Button buttonLireThermique;
-        private System.Windows.Forms.TextBox textBoxThermique;
-        private System.Windows.Forms.PictureBox pictureBoxGraph;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox textBoxStatut;
+                ushort start = (ushort)(adresse - 1);
+                var trameE = new byte[]
+                {
+                    0x00, 0x00,
+                    0x00, 0x00,
+                    0x00, 0x06,
+                    0x01,
+                    0x03,
+                    (byte)(start >> 8), (byte)(start & 0xFF),
+                    0x00, 0x01
+                };
+
+                socket.Send(trameE);
+
+                var trameR = new byte[256];
+                int bytes = socket.Receive(trameR);
+                if (bytes >= 11 && trameR[7] == 0x03 && trameR[8] == 0x02)
+                {
+                    ushort val = (ushort)((trameR[9] << 8) | trameR[10]);
+                    strResultat = "ok";
+                    return unchecked((short)val);
+                }
+                strResultat = "réponse invalide";
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                strResultat = ex.Message;
+                return 0;
+            }
+        }
+    }
+
+    public partial class Form1 : Form
+    {
+        private CModbus modbus;
+        private List<double> tensionValues = new List<double>();
+        private int pointCount = 0;
+
+        public Form1()
+        {
+            InitializeComponent();
+            modbus = new CModbus();
+        }
+
+        private void buttonConnexion_Click(object sender, EventArgs e)
+        {
+            string adresseIP = textBoxAdresseIP.Text;
+            textBoxStatut.Text += $"Connexion au serveur {adresseIP}\r\n";
+            var res = modbus.Connexion(adresseIP);
+            if (res == "ok") textBoxStatut.Text += "Connexion ok\r\n"; else textBoxStatut.Text += "**Exception : Impossible de se connecter au serveur\r\nMessage : " + res + "\r\n";
+            textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+            textBoxStatut.ScrollToCaret();
+        }
+
+        private void buttonDeconnexion_Click(object sender, EventArgs e)
+        {
+            var res = modbus.Deconnexion();
+            if (res == "ok") textBoxStatut.Text += "Déconnexion réussie\r\n"; else textBoxStatut.Text += "**Exception lors de la déconnexion\r\nMessage : " + res + "\r\n";
+            textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+            textBoxStatut.ScrollToCaret();
+        }
+
+        private void buttonLire_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string res = "";
+                short val = modbus.LireUnMot(3207, ref res);
+                if (res == "ok")
+                {
+                    double tension = ((ushort)val) / 10.0;
+                    textBoxTension.Text = string.Format("{0:F1} V", tension);
+                }
+                else
+                {
+                    textBoxTension.Text = "Erreur";
+                    textBoxStatut.Text += "**Exception lors de la lecture tension\r\nMessage : " + res + "\r\n";
+                }
+                textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+                textBoxStatut.ScrollToCaret();
+            }
+            catch (System.Exception ex)
+            {
+                textBoxTension.Text = "Erreur";
+                textBoxStatut.Text += "**Exception lors de la lecture tension\r\nMessage : " + ex.Message + "\r\n";
+                textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+                textBoxStatut.ScrollToCaret();
+            }
+        }
+
+        private void buttonLireThermique_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string res = "";
+                short val = modbus.LireUnMot(3208, ref res);
+                if (res == "ok")
+                {
+                    double thermique = ((ushort)val) / 100.0;
+                    textBoxThermique.Text = string.Format("{0:F1} %", thermique);
+                }
+                else
+                {
+                    textBoxThermique.Text = "Erreur";
+                    textBoxStatut.Text += "**Exception lors de la lecture thermique\r\nMessage : " + res + "\r\n";
+                }
+                textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+                textBoxStatut.ScrollToCaret();
+            }
+            catch (System.Exception ex)
+            {
+                textBoxThermique.Text = "Erreur";
+                textBoxStatut.Text += "**Exception lors de la lecture thermique\r\nMessage : " + ex.Message + "\r\n";
+                textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+                textBoxStatut.ScrollToCaret();
+            }
+        }
+
+        private void checkBoxAuto_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxAuto.Checked)
+            {
+                timer1.Start();
+                buttonLire.Enabled = false;
+                buttonLireThermique.Enabled = false;
+                buttonLirePosition.Enabled = false;
+                buttonConnexion.Enabled = false;
+                buttonDeconnexion.Enabled = false;
+            }
+            else
+            {
+                timer1.Stop();
+                buttonLire.Enabled = true;
+                buttonLireThermique.Enabled = true;
+                buttonLirePosition.Enabled = true;
+                buttonConnexion.Enabled = true;
+                buttonDeconnexion.Enabled = true;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            string res = "";
+            short val = modbus.LireUnMot(3207, ref res);
+            if (res == "ok")
+            {
+                double tension = ((ushort)val) / 10.0;
+                textBoxTension.Text = string.Format("{0:F1} V", tension);
+
+                tensionValues.Add(tension);
+                if (tensionValues.Count > 50)
+                {
+                    tensionValues.RemoveAt(0);
+                }
+                pointCount++;
+                pictureBoxGraph.Invalidate();
+
+                textBoxStatut.Text += string.Format("ok Tension = {0:F1}\r\n", tension);
+            }
+            else
+            {
+                textBoxTension.Text = "Erreur";
+                textBoxStatut.Text += "Erreur lecture automatique\r\n";
+            }
+
+            short valTherm = modbus.LireUnMot(3208, ref res);
+            if (res == "ok")
+            {
+                double thermique = ((ushort)valTherm) / 100.0;
+                textBoxThermique.Text = string.Format("{0:F1} %", thermique);
+            }
+
+            short valPos = modbus.LireUnMot(3209, ref res);
+            if (res == "ok")
+            {
+                double angle = CalculerAngle((ushort)valPos);
+                textBoxPosition.Text = string.Format("{0:F1}°", angle);
+            }
+
+            textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+            textBoxStatut.ScrollToCaret();
+        }
+
+        private void buttonLirePosition_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string res = "";
+                short val = modbus.LireUnMot(3209, ref res);
+                if (res == "ok")
+                {
+                    double angle = CalculerAngle((ushort)val);
+                    textBoxPosition.Text = string.Format("{0:F1}°", angle);
+                }
+                else
+                {
+                    textBoxPosition.Text = "Erreur";
+                    textBoxStatut.Text += "**Exception lors de la lecture position\r\nMessage : " + res + "\r\n";
+                }
+                textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+                textBoxStatut.ScrollToCaret();
+            }
+            catch (System.Exception ex)
+            {
+                textBoxPosition.Text = "Erreur";
+                textBoxStatut.Text += "**Exception lors de la lecture position\r\nMessage : " + ex.Message + "\r\n";
+                textBoxStatut.SelectionStart = textBoxStatut.Text.Length;
+                textBoxStatut.ScrollToCaret();
+            }
+        }
+
+        private double CalculerAngle(ushort position)
+        {
+            double pos0 = 0;
+            double pos90 = 16383;
+            double angle = (position - pos0) * 90.0 / (pos90 - pos0);
+            return Math.Max(0, Math.Min(90, angle));
+        }
+
+        private void pictureBoxGraph_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.Clear(Color.White);
+
+            if (tensionValues.Count < 2) return;
+
+            int width = pictureBoxGraph.Width - 40;
+            int height = pictureBoxGraph.Height - 40;
+            int startX = 20;
+            int startY = 20;
+
+            using (Pen gridPen = new Pen(Color.LightGray))
+            using (Pen axisPen = new Pen(Color.Black))
+            using (Pen linePen = new Pen(Color.Blue, 2))
+            using (Font font = new Font("Arial", 8))
+            using (Brush brush = new SolidBrush(Color.Black))
+            {
+                g.DrawRectangle(axisPen, startX, startY, width, height);
+
+                for (int i = 0; i <= 4; i++)
+                {
+                    int y = startY + (height * i / 4);
+                    g.DrawLine(gridPen, startX, y, startX + width, y);
+                    double voltage = 245 - (i * 10);
+                    g.DrawString(voltage.ToString(), font, brush, 2, y - 6);
+                }
+
+                for (int i = 1; i < tensionValues.Count; i++)
+                {
+                    double v1 = tensionValues[i - 1];
+                    double v2 = tensionValues[i];
+
+                    int x1 = startX + (width * (i - 1) / (tensionValues.Count - 1));
+                    int y1 = startY + height - (int)((v1 - 205) * height / 40);
+                    int x2 = startX + (width * i / (tensionValues.Count - 1));
+                    int y2 = startY + height - (int)((v2 - 205) * height / 40);
+
+                    g.DrawLine(linePen, x1, y1, x2, y2);
+                }
+
+                g.DrawString("Tension (V)", font, brush, startX + width / 2 - 30, 5);
+                g.DrawString("Temps", font, brush, startX + width - 20, startY + height + 5);
+            }
+        }
     }
 }
-
